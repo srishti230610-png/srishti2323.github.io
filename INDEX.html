@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEloria | Beauty Made Bold</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        /* TOP BAR */
+
+        .top-bar {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 9px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* HEADER */
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #e6005c;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #e6005c;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 18px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 620px;
+            background:
+                linear-gradient(90deg, rgba(0,0,0,.75), rgba(0,0,0,.1)),
+                url("https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 550px;
+        }
+
+        .hero-content small {
+            font-size: 15px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 82px);
+            line-height: .95;
+            margin: 18px 0;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e6005c;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: .3s;
+            border: 2px solid #e6005c;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #e6005c;
+        }
+
+        /* CATEGORIES */
+
+        .section {
+            padding: 75px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title p {
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .category {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .category:hover img {
+            transform: scale(1.08);
+        }
+
+        .category-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 30px 20px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,.8));
+        }
+
+        .category-content h3 {
+            font-size: 25px;
+            text-transform: uppercase;
+        }
+
+        /* PRODUCTS */
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            position: relative;
+            background: #f7f7f7;
+            transition: .3s;
+        }
+
+        .product:hover {
+            transform: translateY(-6px);
+        }
+
+        .product-image {
+            height: 330px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .product:hover img {
+            transform: scale(1.05);
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #e6005c;
+            color: white;
+            padding: 7px 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .product-info {
+            padding: 18px;
+            background: white;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: #e6005c;
+            margin-bottom: 8px;
+        }
+
+        .price {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        /* PROMO */
+
+        .promo {
+            min-height: 450px;
+            background:
+                linear-gradient(90deg, rgba(0,0,0,.7), rgba(0,0,0,.1)),
+                url("https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            color: white;
+        }
+
+        .promo-content {
+            max-width: 500px;
+        }
+
+        .promo h2 {
+            font-size: 55px;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .promo p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* TRENDING */
+
+        .trending {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .trend-card {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trend-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .trend-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .trend-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 45px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,.85));
+        }
+
+        .trend-content h2 {
+            font-size: 36px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* NEWSLETTER */
+
+        .newsletter {
+            background: #f3e7eb;
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .newsletter h2 {
+            font-size: 35px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .newsletter p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            max-width: 550px;
+            margin: auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 16px;
+            border: 1px solid #aaa;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 16px 25px;
+            background: #000;
+            color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 60px 7% 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 45px;
+        }
+
+        .footer-logo {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: #e6005c;
+        }
+
+        footer p {
+            color: #bbb;
+            line-height: 1.7;
+        }
+
+        footer h3 {
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin-bottom: 10px;
+        }
+
+        footer ul li a {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        footer ul li a:hover {
+            color: white;
+        }
+
+        .social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .copyright {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE MENU */
+
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 1000px) {
+
+            .categories,
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            nav {
+                gap: 15px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 700px) {
+
+            .header-main {
+                height: 70px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                border-top: 1px solid #ddd;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .header-icons {
+                display: none;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            .categories,
+            .products,
+            .trending {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                height: 400px;
+            }
+
+            .promo h2 {
+                font-size: 42px;
+            }
+
+            .trend-card {
+                height: 400px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+        FREE SHIPPING ON ORDERS ABOVE ₹999
+    </div>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="header-main">
+
+            <div class="logo">
+                shop<span>Eloria</span>
+            </div>
+
+            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+            <nav id="nav">
+                <a href="#home">Home</a>
+                <a href="#makeup">Makeup</a>
+                <a href="#skincare">Skincare</a>
+                <a href="#new">New In</a>
+                <a href="#best">Best Sellers</a>
+                <a href="#offers">Offers</a>
+            </nav>
+
+            <div class="header-icons">
+                ♡
+                🛍
+                🔍
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>Welcome to ShopEloria</small>
+
+            <h1>Beauty<br>Without Limits</h1>
+
+            <p>
+                Discover makeup and beauty essentials designed
+                to help you express your own unique style.
+            </p>
+
+            <a href="#best" class="btn">
+                Shop Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+
+    <section class="section" id="makeup">
+
+        <div class="section-title">
+
+            <h2>Shop By Category</h2>
+
+            <p>
+                Everything you need for your everyday beauty look.
+            </p>
+
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=900&q=80">
+
+                <div class="category-content">
+                    <h3>Lips</h3>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80">
+
+                <div class="category-content">
+                    <h3>Eyes</h3>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80">
+
+                <div class="category-content">
+                    <h3>Face</h3>
+                </div>
+
+            </div>
+
+
+            <div class="category">
+
+                <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80">
+
+                <div class="category-content">
+                    <h3>Skincare</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BEST SELLERS -->
+
+    <section class="section" id="best">
+
+        <div class="section-title">
+
+            <h2>Best Sellers</h2>
+
+            <p>
+                Meet the products everyone is loving.
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+            <div class="product">
+
+                <div class="product-image">
+
+                    <span class="badge">BEST SELLER</span>
+
+                    <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=700&q=80">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Eloria Velvet Matte Lipstick</h3>
+
+                    <div class="stars">★★★★★</div>
+
+                    <div class="price">₹599</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-image">
+
+                    <span class="badge">NEW</span>
+
+                    <img src="https://images.unsplash.com/photo-1631214524020-7e18db9a8f92?auto=format&fit=crop&w=700&q=80">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Eloria Glow Foundation</h3>
+
+                    <div class="stars">★★★★★</div>
+
+                    <div class="price">₹799</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-image">
+
+                    <span class="badge">TRENDING</span>
+
+                    <img src="https://images.unsplash.com/photo-1583241800698-e8ab01830a07?auto=format&fit=crop&w=700&q=80">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Eloria Liquid Blush</h3>
+
+                    <div class="stars">★★★★☆</div>
+
+                    <div class="price">₹499</div>
+
+                </div>
+
+            </div>
+
+
+            <div class="product">
+
+                <div class="product-image">
+
+                    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=700&q=80">
+
+                </div>
+
+                <div class="product-info">
+
+                    <h3>Eloria Eye Essentials Kit</h3>
+
+                    <div class="stars">★★★★★</div>
+
+                    <div class="price">₹999</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROMOTIONAL BANNER -->
+
+    <section class="promo" id="offers">
+
+        <div class="promo-content">
+
+            <h2>Glow Your Way</h2>
+
+            <p>
+                Create your signature look with our newest
+                collection of high-performance beauty essentials.
+            </p>
+
+            <a href="#best" class="btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRENDING -->
+
+    <section class="section" id="new">
+
+        <div class="section-title">
+
+            <h2>What's Trending</h2>
+
+            <p>
+                Fresh looks. New ideas. Your beauty, your rules.
+            </p>
+
+        </div>
+
+
+        <div class="trending">
+
+            <div class="trend-card">
+
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1000&q=80">
+
+                <div class="trend-content">
+
+                    <h2>Bold Lips</h2>
+
+                    <p>Make every moment unforgettable.</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="trend-card">
+
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1000&q=80">
+
+                <div class="trend-content">
+
+                    <h2>Glow Look</h2>
+
+                    <p>Fresh skin. Natural glow. Effortless beauty.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter">
+
+        <h2>Join the Eloria Club</h2>
+
+        <p>
+            Get beauty tips, new launches and exclusive offers.
+        </p>
+
+        <form class="newsletter-form">
+
+            <input
+                type="email"
+                placeholder="Enter your email address"
+                required
+            >
+
+            <button type="submit">
+                Subscribe
+            </button>
+
+        </form>
+
+    </section>
+
+
+
+<!DOCTYPE html>
+<html>
+<style>
+ th, td {
+  border:2px solid black; border-collapse: collapse;
+}
+</style>
+<body>
+<link rel="stylesheet" href="abc.css">
+<h2>The ShopEloria</h2>
+<table style="width:50%">
+
+  <tr>
+    <th>Products</th>
+    <th>Brand</th>
+    <th>Owner</th>
+  </tr>
+  <tr>
+    <td>Serum</td>
+    <td>ShopEloria</td>
+    <td>Srishti</td>
+  </tr>
+  <tr>
+    <td>cleanser</td>
+    <td>ShopEloria</td>
+    <td>Srishti</td>
+  </tr>
+    <tr>
+     <td>Sunscreen</td>
+        <td>Shopeloria</td>
+        <td>Srishti</td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+<ol>
+  <li>Makeup Products</li>
+  <li>Skincare Products</li>
+</ol>
+
+<dl>
+  <dt>ShopEloria</dt>
+  <dd>- Serum , Cleanser , Toner </dd>
+  <dt>Makeup Essentials</dt>
+  <dd>- Eye liner , Mascara ,concealer , Lip gloss etc.</dd>
+</dl>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+
+                <div class="footer-logo">
+                    shop<span>Eloria</span>
+                </div>
+
+                <p>
+                    Beauty that lets you be unapologetically you.
+                    Discover makeup and skincare made for
+                    modern beauty lovers.
+                </p>
+
+                <div class="social">
+
+                    <a href="#">f</a>
+                    <a href="#">◎</a>
+                    <a href="#">▶</a>
+                    <a href="#">𝕏</a>
+
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <h3>Shop</h3>
+
+                <ul>
+
+                    <li><a href="#">Makeup</a></li>
+                    <li><a href="#">Skincare</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>Help</h3>
+
+                <ul>
+
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">FAQs</a></li>
+
+                </ul>
+
+            </div>
+
+
+            <div>
+
+                <h3>About Eloria</h3>
+
+                <ul>
+
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Beauty Journal</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 shopEloria. All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function toggleMenu() {
+
+            document.getElementById("nav").classList.toggle("active");
+
+        }
+
+    </script>
+
+</body>
+</html>
